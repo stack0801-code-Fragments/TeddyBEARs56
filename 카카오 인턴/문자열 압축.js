@@ -22,7 +22,6 @@ function solution(s) {
         if(item.min_length > item.real_str.length){
             item.min_length = item.real_str.length
         }
-        console.log(item.real_str)
         item.count = 1;
         item.real_str = '';
         
