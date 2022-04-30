@@ -1,5 +1,0 @@
-﻿  소스.cpp
-C:\Users\apple\Desktop\프로그래머스\카카오 인턴\카카오프렌즈 컬러링북\카카오프렌즈 컬러링북\소스.cpp(41,54): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\apple\Desktop\프로그래머스\카카오 인턴\카카오프렌즈 컬러링북\카카오프렌즈 컬러링북\소스.cpp(41,82): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-C:\Users\apple\Desktop\프로그래머스\카카오 인턴\카카오프렌즈 컬러링북\카카오프렌즈 컬러링북\소스.cpp(89,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  카카오프렌즈 컬러링북.vcxproj -> C:\Users\apple\Desktop\프로그래머스\카카오 인턴\카카오프렌즈 컬러링북\Debug\카카오프렌즈 컬러링북.exe
