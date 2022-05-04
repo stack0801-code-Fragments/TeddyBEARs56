@@ -46,6 +46,9 @@ void loop(int n, int clear, int count, vector<string> data, vector<string> kakao
     }
 }
 
+
+// 이코드는 글렀나봄.... 다시 만들어보자
+
 // 전역 변수를 정의할 경우 함수 내에 초기화 코드를 꼭 작성해주세요.
 int solution(int n, vector<string> data) {     
     int answer = 0;
