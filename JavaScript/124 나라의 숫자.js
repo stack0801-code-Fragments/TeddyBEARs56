@@ -18,4 +18,4 @@ function solution(n) {
     return answer;
 }
 
-console.log(solution(9));
+console.log(solution(9)); 
