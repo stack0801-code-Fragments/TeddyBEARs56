@@ -1,32 +1,31 @@
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
         int[] answer;
-        int[] check = new int[progresses.length];
-        int count = 0;
-        int count1 = 0;
+        int days = 0;
+        int length = 0;
         int max = 0;
         for(int i=0; i < progresses.length; i++){
             while(progresses[i] < 100){
                 progresses[i] += speeds[i];
-                count++;
+                days++;
             }
-            if(max < count){
-                max = count;
-                count1++;
+            if(max < days){
+                max = days;
+                length++;
             }
-            check[i] = max;
-            count = 0;
+            progresses[i] = max;
+            days = 0;
         }
-        answer = new int[count1];
-        count1 = 0;
+        answer = new int[length];
+        length = 0;
         max = 0;
-        for(int i=0; i < check.length; i++){
-            if(max < check[i]){
-                max = check[i];
-                answer[count1] = 1;
-                count1++;
-            }else if( max == check[i]){
-                answer[count1-1]++;
+        for(int i=0; i < progresses.length; i++){
+            if(max < progresses[i]){
+                max = progresses[i];
+                answer[length] = 1;
+                length++;
+            }else if( max == progresses[i]){
+                answer[length-1]++;
             }
         }
         return answer;
