@@ -2,49 +2,37 @@ class Solution {
     public int[] solution(int rows, int columns, int[][] queries) {
         int[] answer = new int[queries.length];
         int[][] map = new int[rows][columns];
-        for(int i = 1; i <= rows; i++)
-            for(int j = 1; j <= columns; j++)
-                map[i-1][j-1] = (i-1) * rows + j;
-        for(int i = 0; i < queries.length; i++){
-            answer[i] = shake(rows, columns, queries[i], map);
-
-            for(int k = 0; k < rows; k++){
-                for(int j = 0; j < columns; j++)
-                    System.out.print("      " + map[k][j]);
-                System.out.println();
-            }
-        }
+        int num = 1;
+        for(int i=0 ; i<rows ; i++)
+            for(int j=0 ; j<columns ; j++)
+                map[i][j] = num++;
+        for(int i = 0; i < queries.length; i++)
+            answer[i] = shake(queries[i], map);
         return answer;
     }
 
-    public int shake(int rows, int columns, int[] queries, int[][] map){
-        int min = rows * columns;
+    public int shake(int[] queries, int[][] map){
         int f_y = queries[0] - 1, f_x = queries[1] - 1, l_y = queries[2] - 1, l_x = queries[3] - 1;
-        int buffer1 = map[f_y][f_x], buffer2;
-        for(int x = f_x + 1; x < l_x; x++){
-            buffer2 = map[f_y][x];
-            min = min_check(min, buffer2);
-            map[f_y][x] = buffer1;
-            buffer1 = buffer2;
+        int buffer1 = map[f_y][f_x], min;
+        min = buffer1;
+
+        for(int i = f_y; i < l_y; i++){
+            min = min_check(min, map[i + 1][f_x]);
+            map[i][f_x] = map[i + 1][f_x];
         }
-        for(int y = f_y; y < l_y; y++){
-            buffer2 = map[y][l_x];
-            min = min_check(min, buffer2);
-            map[y][l_x] = buffer1;
-            buffer1 = buffer2;
+        for(int i = f_x; i < l_x; i++){
+            min = min_check(min, map[l_y][i + 1]);
+            map[l_y][i] = map[l_y][i + 1];
         }
-        for(int x = l_x; x > f_x; x--){
-            buffer2 = map[l_y][x];
-            min = min_check(min, buffer2);
-            map[l_y][x] = buffer1;
-            buffer1 = buffer2;
+        for(int i = l_y; i > f_y ; i--){
+            min = min_check(min, map[i - 1][l_x]);
+            map[i][l_x] = map[i - 1][l_x];
         }
-        for(int y = l_y; y >= f_y; y--){
-            buffer2 = map[y][f_x];
-            min = min_check(min, buffer2);
-            map[y][f_x] = buffer1;
-            buffer1 = buffer2;
+        for(int i = l_x; i > f_x; i--){
+            min = min_check(min, map[f_y][i - 1]);
+            map[f_y][i] = map[f_y][i - 1];
         }
+        map[f_y][f_x + 1] = buffer1;
         return min;
     }
 
@@ -59,6 +47,6 @@ class Solution {
         int columns = 3;
         int[][] queries = {{1,1,2,2}, {1,2,2,3}, {2,1,3,2}, {2,2,3,3}};
         Solution s = new Solution();
-        int[] result = s.solution(rows,columns,queries);
+        for(int i : s.solution(rows,columns,queries)) System.out.println(i);
     }
 }
