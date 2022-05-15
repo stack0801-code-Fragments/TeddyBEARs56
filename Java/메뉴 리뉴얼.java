@@ -27,27 +27,23 @@ class Solution {
             max_num = 0;                // 횟수 초기화
         }
         Collections.sort(answer);   // sort(정렬)
-        return answer.toArray(String[]::new);
+        return answer.toArray(String[]::new);       // string으로 변환
     }
 
     public void DFS(String orders, int course, String answer, int num) {
-        if(orders.length() < course)
-            return;
-        if(answer.length() == course){
-            if(map.get(answer) == null){
-                map.put(answer, 1);
-            }else{
-                map.replace(answer,map.get(answer) + 1);
-                num = map.get(answer);
-                if(max_num < num){
-                    max_num = num;
-                }
+        if(orders.length() < course) return;    // 주문수 보다 조합의수가 더 많으면 return
+        if(answer.length() == course){      // 만들어진 문자열의 길이가 조합의 길이가 되면
+            if(map.get(answer) == null)     // map에 문자열이 존재하지 않다면
+                map.put(answer, 1);         // 문자열(key)와 1(value)를 추가
+            else{                       
+                num = map.get(answer);      
+                map.replace(answer,num + 1);        // 존재한다면 value ++    
+                if(max_num < num) max_num = num;    // 가장 많은 주문 횟수
             }
             return;
         }
-        for(int i = num; i < orders.length(); i++){
-            DFS(orders, course, answer + orders.charAt(i), i + 1);
-        }
+        for(int i = num; i < orders.length(); i++)
+            DFS(orders, course, answer + orders.charAt(i), i + 1);  // 재귀 함수
     }
 
     public static void main(String[] args) {

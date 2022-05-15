@@ -13,12 +13,11 @@ class Solution {
     }
     public void DFS (int[]  numbers, int result, int target, int end){
         if(end < numbers.length) {
-            DFS(numbers, result + numbers[end], target, end + 1);
-            DFS(numbers, result - numbers[end], target, end + 1);
+            DFS(numbers, result + numbers[end], target, end + 1);       // +
+            DFS(numbers, result - numbers[end], target, end + 1);       // -
         }else{
-            System.out.println(" = " + result);
-            if(result == target)
-                answer++;
+            if(result == target)        // 끝까지 도달 했다면 목표수치와 결과를 비교
+                answer++;               
             return;
         }
     }
