@@ -1,6 +1,6 @@
 import java.util.Stack;
 class Solution {
-    public int solution(String s)
+    public int solution(String int[])
     {
         Stack<Character> test = new Stack<Character>();
         for(char ch : s.toCharArray()){
@@ -16,7 +16,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        String data = "cdcd";
-        System.out.println(s.solution(data));
+        int[] num = {1, 1, 1, 1, 1}
+        System.out.println(s.solution(num));
     }
 }

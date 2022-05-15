@@ -4,29 +4,29 @@ import java.util.HashMap;
 import java.util.Collections;
 
 class Solution {
-    HashMap<String, Integer> map = new HashMap<>();
-    int max_num = 0;
+    HashMap<String, Integer> map = new HashMap<>();     // 조합과 키
+    int max_num = 0;                                    // 가장 많은 주문
     public String[] solution(String[] orders, int[] course) {
-        ArrayList<String> answer = new ArrayList<>();
-        String[] new_orders = new String[orders.length];
+        ArrayList<String> answer = new ArrayList<>();       // ArrayList
+        String[] new_orders = new String[orders.length];    // 입력받은 orders를 sorting
         for(int i = 0; i < orders.length; i++){
-            char[] sol = orders[i].toCharArray();
-            Arrays.sort(sol);
-            new_orders[i]  = new String(sol);
+            char[] sol = orders[i].toCharArray();   // 캐릭터 배열로 변환해서
+            Arrays.sort(sol);                       // sort(정렬)하고
+            new_orders[i]  = new String(sol);       // new_orders에 집어 넣음
         }
-        for (int k : course) {
-            for (String order : new_orders) {
+        for (int k : course) {                  // 조합의 수만큼
+            for (String order : new_orders) {   // String 하나씩 DFS 실행
                 DFS(order, k, "", 0);
             }
-            for (String str : map.keySet()) {
-                if (max_num == map.get(str)) {
-                    answer.add(str);
+            for (String str : map.keySet()) {   // map의 키값만큼 반복
+                if (max_num == map.get(str)) {  
+                    answer.add(str);            // map을 기록할 때 가장 큰 횟수와 같은 조합을 answer에 추가
                 }
             }
-            map = new HashMap<>();
-            max_num = 0;
+            map = new HashMap<>();      // 다음 문자열 에대한 새로운 map 생성
+            max_num = 0;                // 횟수 초기화
         }
-        Collections.sort(answer);
+        Collections.sort(answer);   // sort(정렬)
         return answer.toArray(String[]::new);
     }
 
