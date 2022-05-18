@@ -2,7 +2,7 @@ import java.util.Objects;
 
 class Solution {
     public String solution(String p) {
-        if(Objects.equals(p, "")) return p; //          1. 입력이 빈 문자열인 경우, 빈 문자열을 반환합니다.
+        if(Objects.equals(p, "")) return p;     //          1. 입력이 빈 문자열인 경우, 빈 문자열을 반환합니다.
         return test(p);
     }
 
