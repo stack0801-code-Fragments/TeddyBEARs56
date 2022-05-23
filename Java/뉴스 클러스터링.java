@@ -10,19 +10,20 @@ class Solution {
                 list.add(num1 + "" + num2);
         }
     }
+
     public int solution(String str1, String str2) {
-        ArrayList<String> list1 = new ArrayList<>(), list2 = new ArrayList<>();
-        int intersection = 0, union = 0;
-        build(list1, str1.toUpperCase());
-        build(list2, str2.toUpperCase());
-        union += list1.size() + list2.size();
-        for(String str : list1){
+        ArrayList<String> list1 = new ArrayList<>(), list2 = new ArrayList<>(); // str1 , str2 담을 공간
+        int intersection = 0, union;
+        build(list1, str1.toUpperCase());   // toUpperCase 대문자로 통일
+        build(list2, str2.toUpperCase());   // 두글자씩 자르기
+        union = list1.size() + list2.size();// 두 배열의 합을 구한후
+        for(String str : list1){        // str1 기준으로 str2에 존재하면 str2에서 삭제 시킨다
             if(list2.contains(str)){
                 list2.remove(str);
-                intersection++;
+                intersection++;         // 교집합 추가
             }
         }
-        union -= intersection;
+        union -= intersection;              // 교집합 되는 수를 뺀다
         if(intersection == 0 && union == 0)
             return 65536;
         else
