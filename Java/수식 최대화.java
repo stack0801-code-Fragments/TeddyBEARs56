@@ -4,9 +4,10 @@ class Solution {
     long max = 0;
     //char[] item = {'*','+','-'};
     //boolean[] check = new boolean[3];
-    char[][] item = {{'*','+','-'}, {'*','-','+'}, {'+','*','-'}, {'+','-','*'}, {'-','*','+'}, {'-','+','*'}};
+    char[][] item = {{'*','+','-'}, {'*','-','+'}, {'+','*','-'}, {'+','-','*'}, {'-','*','+'}, {'-','+','*'}};     // 하드코딩 만세! 시간 비교해봤는데 
     ArrayList<Long> numbers = new ArrayList<>();
     ArrayList<Character> operators = new ArrayList<>();
+    
     public long solution(String expression) {
         StringBuilder number = new StringBuilder();
         expression = expression + " ";
@@ -40,7 +41,7 @@ class Solution {
                 else
                     answer = new_numbers.get(index) - new_numbers.get(index + 1);
                 new_operators.remove(index);
-                new_numbers.remove(index + 1);
+                new_numbers.remove(index);
                 new_numbers.remove(index);
                 new_numbers.add(index, answer);
                 index = new_operators.indexOf(item);

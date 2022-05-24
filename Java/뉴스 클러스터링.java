@@ -6,7 +6,7 @@ class Solution {
         for (int i = 0; i < str.length() - 1; i++) {
             num1 = str.charAt(i);
             num2 = str.charAt(i + 1);
-            if (Character.isLetter(num1) && Character.isLetter(num2))
+            if (Character.isLetter(num1) && Character.isLetter(num2))   // isLetter 문자만 취급(기호, 특수문자, 숫자 x)
                 list.add(num1 + "" + num2);
         }
     }
