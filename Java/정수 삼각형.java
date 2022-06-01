@@ -5,10 +5,7 @@ class Solution {
         for(int i = 0 ; i < triangle.length - 1; i++){
             triangle[i+1][0] += triangle[i][0];
             for(int j = 1; j <triangle[i].length; j++)
-                if(triangle[i][j-1] < triangle[i][j])
-                    triangle[i+1][j] += triangle[i][j];
-                else
-                    triangle[i+1][j] += triangle[i][j-1];
+                triangle[i+1][j] += Math.max(triangle[i][j-1], triangle[i][j]);
             triangle[i+1][triangle[i+1].length-1] += triangle[i][triangle[i].length-1];
         }
         for(int num : triangle[triangle.length-1])
