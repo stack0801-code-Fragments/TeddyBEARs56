@@ -40,6 +40,7 @@ class Solution
             for (int j = 0; j < 10; j++)
                 System.out.print(code.get(j) + " ");
             System.out.println();
+            sc.close();
         }
     }
 }
